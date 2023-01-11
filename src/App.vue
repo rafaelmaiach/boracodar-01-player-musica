@@ -26,4 +26,11 @@
 .player {
   padding: 12px 0;
 }
+
+@media (min-width: 48em) {
+  .container {
+    width: 400px;
+    padding: 29px;
+  }
+}
 </style>

@@ -1,9 +1,11 @@
 <template>
   <div class="track-container">
-    <div class="buttons-container">
-      <MusicTrackingButton :handle-action="playBack" :icon="IconPlayBack" icon-alt="Play previous track"/>
-      <MusicTrackingButton :handle-action="isPlayingTrack ? pause : play" :icon="isPlayingTrack ? IconPause : IconPlay"/>
-      <MusicTrackingButton :handle-action="playForward" :icon="IconPlayForward" icon-alt="Play next track"/>
+    <div class="track-actions">
+      <div class="buttons-container">
+        <MusicTrackingButton :handle-action="playBack" :icon="IconPlayBack" icon-alt="Play previous track"/>
+        <MusicTrackingButton :handle-action="isPlayingTrack ? pause : play" :icon="isPlayingTrack ? IconPause : IconPlay"/>
+        <MusicTrackingButton :handle-action="playForward" :icon="IconPlayForward" icon-alt="Play next track"/>
+      </div>
     </div>
     <div class="track-progress">
       <div class="track-progress-bar" :style="{ width: `${progress}%` }"></div>
@@ -81,7 +83,7 @@ const convertTimeToText = (time) => {
   const minutes = Math.floor(time / 60)
   const seconds = time % 60
 
-  return `${ minutes.toString().padStart(2, "0") }:${seconds.toString().padStart(2, "0")}`
+  return `${minutes.toString().padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`
 }
 
 const currentTimeLabel = computed(() => {
@@ -95,13 +97,19 @@ const remainingTimeLabel = computed(() => {
 
 <style scoped>
 .track-container {
+  display: flex;
+  flex-direction: column;
   margin-top: 29px;
 }
 
+.track-actions {
+  display: flex;
+}
+
 .buttons-container {
+  width: 100%;
   display: flex;
   justify-content: space-between;
-  margin-top: 29px;
 }
 
 .track-progress {
@@ -126,5 +134,15 @@ const remainingTimeLabel = computed(() => {
   font-size: 0.875rem;
   line-height: 160%;
   opacity: 0.7;
+}
+
+@media (min-width: 48em) {
+  .track-actions {
+    justify-content: center;
+  }
+
+  .buttons-container {
+    max-width: 200px;
+  }
 }
 </style>
