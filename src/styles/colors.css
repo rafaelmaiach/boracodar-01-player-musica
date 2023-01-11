@@ -1,5 +1,7 @@
- :root {
+:root {
     --white: #E1E1E1;
+    --white-30: #E1E1E130;
+    --white-80: #E1E1E180;
     --white-dark: #D9D9D9;
     --white-darker: #C4C4CC;
     --purple: #2A2141;
